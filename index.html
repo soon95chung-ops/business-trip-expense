@@ -421,16 +421,52 @@ function buildApiUrl(){
   const end=new Date(S.date);
   end.setDate(end.getDate()+3);
   const endStr=end.toISOString().split('T')[0].replace(/-/g,'');
-  return `https://www.opinet.co.kr/api/avgRecentNDayPrice.do?code=${F260407806}&out=json&prodcd=${S.fuelCode}&date=${endStr}`;
+  // ✅ 수정: ${F260407806} → ${KEY} (변수명 오류 수정)
+  return `https://www.opinet.co.kr/api/avgRecentNDayPrice.do?code=${KEY}&out=json&prodcd=${S.fuelCode}&date=${endStr}`;
 }
 
+// ✅ 수정: 신뢰도 낮은 CORS 프록시 대신 Claude API(web_search)로 오피넷 데이터 조회
 async function tryProxies(rawUrl){
+  // 1순위: Claude API web_search로 오피넷 실시간 데이터 요청
+  try {
+    const fuelName = S.fuelLabel || '보통휘발유';
+    const tripDate = S.date; // YYYY-MM-DD
+    const prompt = `오피넷(opinet.co.kr) 전국 평균 ${fuelName} 가격을 ${tripDate} 기준 최근 7일치 조회해줘.
+반드시 아래 JSON 형식으로만 응답해. 다른 텍스트는 절대 포함하지 마.
+{"RESULT":{"OIL":[{"TRADE_DT":"YYYYMMDD","PRICE":숫자},...]}}
+TRADE_DT는 8자리 숫자 문자열, PRICE는 소수점 포함 숫자.`;
+
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    if (!resp.ok) throw new Error('Claude API HTTP '+resp.status);
+    const data = await resp.json();
+    // content 블록에서 text 타입만 수집
+    const textBlocks = (data.content||[]).filter(b=>b.type==='text');
+    const rawText = textBlocks.map(b=>b.text).join('');
+    // JSON 펜스 제거 후 파싱
+    const clean = rawText.replace(/```json|```/gi,'').trim();
+    // JSON 오브젝트 부분만 추출
+    const match = clean.match(/\{[\s\S]*\}/);
+    if (!match) throw new Error('JSON 파싱 실패: '+clean.slice(0,80));
+    return JSON.parse(match[0]);
+  } catch(claudeErr) {
+    console.warn('Claude API 조회 실패, CORS 프록시 시도:', claudeErr.message);
+  }
+
+  // 2순위: CORS 프록시 순차 시도 (폴백)
   for(let i=0;i<PROXIES.length;i++){
     try{
       const resp=await fetch(PROXIES[i](rawUrl),{signal:AbortSignal.timeout(9000)});
       if(!resp.ok) continue;
       const json=await resp.json();
-      // allorigins wraps in {contents}
       return json.contents?JSON.parse(json.contents):json;
     }catch(e){if(i===PROXIES.length-1)throw e;}
   }
