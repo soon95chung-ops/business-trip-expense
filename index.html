@@ -421,7 +421,7 @@ function buildApiUrl(){
   const end=new Date(S.date);
   end.setDate(end.getDate()+3);
   const endStr=end.toISOString().split('T')[0].replace(/-/g,'');
-  return `https://www.opinet.co.kr/api/avgRecentNDayPrice.do?code=${KEY}&out=json&prodcd=${S.fuelCode}&date=${endStr}`;
+  return `https://www.opinet.co.kr/api/avgRecentNDayPrice.do?code=${F260407806}&out=json&prodcd=${S.fuelCode}&date=${endStr}`;
 }
 
 async function tryProxies(rawUrl){
