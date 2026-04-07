@@ -7,102 +7,125 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #ffffff; --bg2: #f5f5f3; --bg3: #eeede9;
-  --text: #1a1a1a; --text2: #6b6b6b; --text3: #9a9a9a;
-  --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.22);
-  --blue: #185FA5; --blue-light: #E6F1FB; --blue-mid: #378ADD;
-  --green-bg: #EAF3DE; --green-text: #3B6D11;
-  --radius-md: 8px; --radius-lg: 12px;
+  --bg:#ffffff; --bg2:#f5f5f3; --bg3:#eeede9;
+  --text:#1a1a1a; --text2:#6b6b6b; --text3:#9a9a9a;
+  --border:rgba(0,0,0,0.12); --border2:rgba(0,0,0,0.22);
+  --blue:#185FA5; --blue-light:#E6F1FB; --blue-mid:#378ADD;
+  --green-bg:#EAF3DE; --green-text:#3B6D11;
+  --amber-bg:#FAEEDA; --amber-text:#854F0B;
+  --red-bg:#FCEBEB; --red-text:#A32D2D;
+  --radius-md:8px; --radius-lg:12px;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1c1c1c; --bg2: #262626; --bg3: #303030;
-    --text: #f0f0f0; --text2: #a0a0a0; --text3: #666666;
-    --border: rgba(255,255,255,0.12); --border2: rgba(255,255,255,0.22);
-    --blue-light: #0c2a44; --green-bg: #1a2e0d; --green-text: #7ec855;
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1c1c1c; --bg2:#262626; --bg3:#303030;
+    --text:#f0f0f0; --text2:#a0a0a0; --text3:#666666;
+    --border:rgba(255,255,255,0.12); --border2:rgba(255,255,255,0.22);
+    --blue-light:#0c2a44; --green-bg:#1a2e0d; --green-text:#7ec855;
+    --amber-bg:#2d1f05; --amber-text:#f0a040;
+    --red-bg:#2d0a0a; --red-text:#f08080;
   }
 }
-body { font-family: -apple-system, 'Pretendard', 'Noto Sans KR', sans-serif; background: var(--bg2); color: var(--text); min-height: 100vh; padding: 1.5rem 1rem 4rem; line-height: 1.6; }
-.app { max-width: 680px; margin: 0 auto; }
-.app-title { font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.app-sub { font-size: 14px; color: var(--text2); margin-bottom: 1.5rem; }
-.progress-wrap { margin-bottom: 1.5rem; }
-.progress-bar { display: flex; gap: 4px; margin-bottom: 6px; }
-.prog-seg { height: 4px; flex: 1; border-radius: 2px; background: var(--border); transition: background 0.3s; }
-.prog-seg.done { background: var(--blue); }
-.prog-seg.active { background: var(--blue-mid); }
-.step-indicator { font-size: 13px; color: var(--text3); }
-.card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem; }
-.step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; padding-bottom: 12px; border-bottom: 0.5px solid var(--border); }
-.step-badge { width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
-.step-badge.done { background: var(--green-text); }
-.step-title { font-size: 16px; font-weight: 600; color: var(--text); }
-.step-sub { font-size: 13px; color: var(--text2); margin-top: 2px; }
-label { font-size: 13px; color: var(--text2); display: block; margin-bottom: 6px; margin-top: 14px; }
-label.first { margin-top: 0; }
-input[type="date"], input[type="number"], input[type="text"], select {
-  width: 100%; padding: 9px 12px; font-size: 14px; font-family: inherit;
-  border: 0.5px solid var(--border2); border-radius: var(--radius-md);
-  background: var(--bg); color: var(--text);
-  transition: border-color 0.15s, box-shadow 0.15s;
+body{font-family:-apple-system,'Pretendard','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--text);min-height:100vh;padding:1.5rem 1rem 4rem;line-height:1.6;}
+.app{max-width:680px;margin:0 auto;}
+.app-title{font-size:22px;font-weight:600;}
+.app-sub{font-size:13px;color:var(--text2);margin-top:2px;margin-bottom:1.5rem;}
+.progress-bar{display:flex;gap:4px;margin-bottom:6px;}
+.prog-seg{height:4px;flex:1;border-radius:2px;background:var(--border);transition:background 0.3s;}
+.prog-seg.done{background:var(--blue);}
+.prog-seg.active{background:var(--blue-mid);}
+.step-ind{font-size:13px;color:var(--text3);margin-bottom:1.5rem;}
+.card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;}
+.step-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:12px;border-bottom:0.5px solid var(--border);}
+.step-badge{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;}
+.step-badge.done{background:var(--green-text);}
+.step-title{font-size:16px;font-weight:600;}
+.step-sub{font-size:13px;color:var(--text2);margin-top:2px;}
+label{font-size:13px;color:var(--text2);display:block;margin-bottom:6px;margin-top:14px;}
+label.first{margin-top:0;}
+input[type="date"],input[type="number"],input[type="text"],select{
+  width:100%;padding:9px 12px;font-size:14px;font-family:inherit;
+  border:0.5px solid var(--border2);border-radius:var(--radius-md);
+  background:var(--bg);color:var(--text);transition:border-color 0.15s,box-shadow 0.15s;
 }
-input:focus, select:focus { outline: none; border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(55,138,221,0.15); }
-input[readonly] { cursor: pointer; background: var(--bg2); }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { padding: 7px 16px; border-radius: 20px; border: 0.5px solid var(--border2); font-size: 13px; cursor: pointer; color: var(--text2); background: var(--bg); transition: all 0.15s; user-select: none; }
-.tag:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
-.tag.selected { background: var(--blue-light); border-color: var(--blue); color: var(--blue); font-weight: 600; }
-.btn-group { display: flex; gap: 10px; margin-top: 1.5rem; justify-content: flex-end; }
-.btn { padding: 10px 22px; font-size: 14px; font-family: inherit; border-radius: var(--radius-md); cursor: pointer; font-weight: 500; transition: all 0.15s; }
-.btn-primary { background: var(--blue); color: #fff; border: none; }
-.btn-primary:hover { background: #0C447C; }
-.btn-secondary { background: transparent; color: var(--text2); border: 0.5px solid var(--border2); }
-.btn-secondary:hover { background: var(--bg2); }
-.section-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px; }
-.section-label.first { margin-top: 0; }
-.info-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid var(--border); font-size: 14px; }
-.info-row:last-child { border-bottom: none; }
-.info-key { color: var(--text2); }
-.info-val { color: var(--text); font-weight: 500; text-align: right; max-width: 60%; }
-.metric-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 14px; }
-.metric-card { background: var(--bg2); border-radius: var(--radius-md); padding: 14px; }
-.metric-card.accent { background: var(--blue-light); }
-.metric-val { font-size: 19px; font-weight: 600; color: var(--text); }
-.metric-card.accent .metric-val { color: var(--blue); }
-.metric-lbl { font-size: 12px; color: var(--text2); margin-top: 3px; }
-.metric-card.accent .metric-lbl { color: var(--blue); }
-.highlight-box { background: var(--bg2); border-radius: var(--radius-md); padding: 1.1rem 1.25rem; margin-top: 14px; display: flex; align-items: center; justify-content: space-between; }
-.big-num-label { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
-.big-num { font-size: 30px; font-weight: 700; color: var(--blue); }
-.badge-success { background: var(--green-bg); color: var(--green-text); font-size: 12px; padding: 4px 12px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
-.divider { border: none; border-top: 0.5px solid var(--border); margin: 16px 0; }
-.loading-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; margin: 10px 0; }
-.loading-fill { height: 100%; background: var(--blue-mid); border-radius: 2px; animation: loadprog 1.8s ease-in-out infinite; }
-@keyframes loadprog { 0%{width:0%;margin-left:0%} 50%{width:60%;margin-left:20%} 100%{width:0%;margin-left:100%} }
-.source-link { color: var(--blue-mid); text-decoration: none; font-size: 12px; }
-.source-link:hover { text-decoration: underline; }
-.screenshot-mock { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 10px 12px; margin-top: 10px; font-size: 12px; color: var(--text3); display: flex; align-items: center; gap: 8px; }
-.popup-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-.popup-inner { background: var(--bg); border-radius: var(--radius-lg); padding: 1.5rem; width: 100%; max-width: 380px; border: 0.5px solid var(--border2); max-height: 80vh; overflow-y: auto; }
-.popup-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
-.tg-item { padding: 10px 14px; border-radius: var(--radius-md); font-size: 14px; cursor: pointer; color: var(--text); border: 0.5px solid transparent; transition: all 0.12s; margin-bottom: 4px; }
-.tg-item:hover { background: var(--bg2); border-color: var(--border2); }
-.hidden { display: none; }
-.fetch-status { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
-@media (max-width: 480px) {
-  .row2 { grid-template-columns: 1fr; }
-  .metric-grid { grid-template-columns: 1fr 1fr; }
-  .metric-grid .metric-card:last-child { grid-column: 1 / -1; }
-  .big-num { font-size: 24px; }
-  .card { padding: 1.1rem; }
+input:focus,select:focus{outline:none;border-color:var(--blue-mid);box-shadow:0 0 0 3px rgba(55,138,221,0.15);}
+input[readonly]{cursor:pointer;background:var(--bg2);}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.tag-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{padding:7px 16px;border-radius:20px;border:0.5px solid var(--border2);font-size:13px;cursor:pointer;color:var(--text2);background:var(--bg);transition:all 0.15s;user-select:none;}
+.tag:hover{border-color:var(--blue-mid);color:var(--blue-mid);}
+.tag.selected{background:var(--blue-light);border-color:var(--blue);color:var(--blue);font-weight:600;}
+.btn-group{display:flex;gap:10px;margin-top:1.5rem;justify-content:flex-end;}
+.btn{padding:10px 22px;font-size:14px;font-family:inherit;border-radius:var(--radius-md);cursor:pointer;font-weight:500;transition:all 0.15s;}
+.btn-primary{background:var(--blue);color:#fff;border:none;}
+.btn-primary:hover{background:#0C447C;}
+.btn-secondary{background:transparent;color:var(--text2);border:0.5px solid var(--border2);}
+.btn-secondary:hover{background:var(--bg2);}
+.sec-lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin:16px 0 8px;}
+.sec-lbl.first{margin-top:0;}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--border);font-size:14px;}
+.info-row:last-child{border-bottom:none;}
+.info-key{color:var(--text2);flex-shrink:0;}
+.info-val{color:var(--text);font-weight:500;text-align:right;}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px;}
+.metric-card{background:var(--bg2);border-radius:var(--radius-md);padding:14px;}
+.metric-card.accent{background:var(--blue-light);}
+.metric-val{font-size:19px;font-weight:600;color:var(--text);}
+.metric-card.accent .metric-val{color:var(--blue);}
+.metric-lbl{font-size:12px;color:var(--text2);margin-top:3px;}
+.metric-card.accent .metric-lbl{color:var(--blue);}
+.highlight-box{background:var(--bg2);border-radius:var(--radius-md);padding:1.1rem 1.25rem;margin-top:14px;display:flex;align-items:center;justify-content:space-between;}
+.big-num-label{font-size:13px;color:var(--text2);margin-bottom:4px;}
+.big-num{font-size:30px;font-weight:700;color:var(--blue);}
+.badge{font-size:12px;padding:4px 12px;border-radius:20px;font-weight:500;white-space:nowrap;display:inline-block;}
+.badge-success{background:var(--green-bg);color:var(--green-text);}
+.divider{border:none;border-top:0.5px solid var(--border);margin:16px 0;}
+.loading-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin:10px 0;}
+.loading-fill{height:100%;background:var(--blue-mid);border-radius:2px;animation:loadprog 1.8s ease-in-out infinite;}
+@keyframes loadprog{0%{width:0%;margin-left:0%}50%{width:60%;margin-left:20%}100%{width:0%;margin-left:100%}}
+.source-link{color:var(--blue-mid);text-decoration:none;font-size:12px;}
+.source-link:hover{text-decoration:underline;}
+.data-box{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;margin-top:10px;}
+.data-box-title{font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
+.chip{background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--radius-md);padding:6px 10px;font-size:13px;text-align:center;}
+.chip-date{font-size:11px;color:var(--text3);display:block;}
+.chip-val{font-weight:600;color:var(--text);}
+.chip.hl{border-color:var(--blue);background:var(--blue-light);}
+.chip.hl .chip-val{color:var(--blue);}
+.chip.hl .chip-date{color:var(--blue-mid);}
+.fetch-status{font-size:13px;color:var(--text2);margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--text3);flex-shrink:0;}
+.dot.spin{background:var(--blue-mid);animation:pulse 1s infinite;}
+.dot.ok{background:var(--green-text);}
+.dot.err{background:var(--red-text);}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.notice{font-size:12px;color:var(--text3);margin-top:8px;line-height:1.6;padding:10px 12px;background:var(--bg2);border-radius:var(--radius-md);}
+.notice.error{background:var(--red-bg);color:var(--red-text);}
+.popup-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.popup-inner{background:var(--bg);border-radius:var(--radius-lg);padding:1.5rem;width:100%;max-width:380px;border:0.5px solid var(--border2);max-height:80vh;overflow-y:auto;}
+.popup-title{font-size:15px;font-weight:600;margin-bottom:12px;}
+.tg-item{padding:10px 14px;border-radius:var(--radius-md);font-size:14px;cursor:pointer;color:var(--text);border:0.5px solid transparent;transition:all 0.12s;margin-bottom:4px;}
+.tg-item:hover{background:var(--bg2);border-color:var(--border2);}
+.hidden{display:none;}
+@media(max-width:480px){
+  .row2{grid-template-columns:1fr;}
+  .metric-grid{grid-template-columns:1fr 1fr;}
+  .metric-grid .metric-card:last-child{grid-column:1/-1;}
+  .big-num{font-size:24px;}
+  .card{padding:1.1rem;}
+}
+@media print{
+  body{background:#fff;padding:0;}
+  .btn-group,.progress-wrap{display:none;}
+  .card{border:1px solid #ddd;box-shadow:none;break-inside:avoid;}
 }
 </style>
 </head>
 <body>
 <div class="app">
   <div class="app-title">출장비 정산</div>
-  <div class="app-sub">유류비 · 고속도로 통행료 자동 계산</div>
+  <div class="app-sub">유류비 · 고속도로 통행료 자동 계산 · 오피넷 실시간 API 연동</div>
 
   <div class="progress-wrap">
     <div class="progress-bar">
@@ -111,82 +134,71 @@ input[readonly] { cursor: pointer; background: var(--bg2); }
       <div class="prog-seg" id="ps3"></div>
       <div class="prog-seg" id="ps4"></div>
     </div>
-    <div class="step-indicator" id="step-indicator">1단계 / 4단계</div>
+    <div class="step-ind" id="step-ind">1단계 / 4단계</div>
   </div>
 
   <!-- STEP 1 -->
   <div class="card" id="step1">
     <div class="step-header">
       <div class="step-badge">1</div>
-      <div>
-        <div class="step-title">출장 기본 정보</div>
-        <div class="step-sub">출장 일자, 차종, 유종을 선택해주세요</div>
-      </div>
+      <div><div class="step-title">출장 기본 정보</div><div class="step-sub">출장 일자, 차종, 유종 선택</div></div>
     </div>
     <label class="first">출장 일자</label>
-    <input type="date" id="trip-date" />
+    <input type="date" id="trip-date"/>
     <label>차종 선택</label>
-    <div class="tag-grid" id="car-type-group">
-      <div class="tag" data-val="1종" onclick="selectTag(this,'car-type-group')">1종 (소형 · 승용)</div>
-      <div class="tag" data-val="2종" onclick="selectTag(this,'car-type-group')">2종 (중형)</div>
-      <div class="tag" data-val="3종" onclick="selectTag(this,'car-type-group')">3종 (대형 · 화물)</div>
+    <div class="tag-grid" id="grp-car">
+      <div class="tag" data-val="1종" onclick="pickTag(this,'grp-car')">1종 (소형 · 승용)</div>
+      <div class="tag" data-val="2종" onclick="pickTag(this,'grp-car')">2종 (중형)</div>
+      <div class="tag" data-val="3종" onclick="pickTag(this,'grp-car')">3종 (대형 · 화물)</div>
     </div>
     <label>유종 선택</label>
-    <div class="tag-grid" id="fuel-type-group">
-      <div class="tag" data-val="휘발유" onclick="selectTag(this,'fuel-type-group')">휘발유</div>
-      <div class="tag" data-val="경유" onclick="selectTag(this,'fuel-type-group')">경유</div>
-      <div class="tag" data-val="LPG" onclick="selectTag(this,'fuel-type-group')">LPG</div>
+    <div class="tag-grid" id="grp-fuel">
+      <div class="tag" data-val="B027" data-label="보통휘발유" onclick="pickTag(this,'grp-fuel')">보통휘발유</div>
+      <div class="tag" data-val="D047" data-label="자동차용경유" onclick="pickTag(this,'grp-fuel')">자동차용경유</div>
     </div>
-    <div class="btn-group">
-      <button class="btn btn-primary" onclick="goStep2()">다음 →</button>
-    </div>
+    <div class="btn-group"><button class="btn btn-primary" onclick="go2()">다음 →</button></div>
   </div>
 
   <!-- STEP 2 -->
   <div class="card hidden" id="step2">
     <div class="step-header">
       <div class="step-badge">2</div>
-      <div>
-        <div class="step-title">출발지 / 목적지 선택</div>
-        <div class="step-sub">지역 선택 후 톨게이트를 지정해주세요</div>
-      </div>
+      <div><div class="step-title">출발지 / 목적지 선택</div><div class="step-sub">지역 → 톨게이트 순서로 선택</div></div>
     </div>
     <div class="row2">
       <div>
         <label class="first">출발지</label>
-        <select id="origin-city" onchange="cityChanged('origin')">
-          <option value="">선택</option>
-          <option>서울</option><option>인천</option><option>군산</option>
+        <select id="orig-city" onchange="cityChange('orig')">
+          <option value="">선택</option><option>서울</option><option>인천</option><option>군산</option>
         </select>
         <label>출발 톨게이트</label>
-        <input type="text" id="origin-gate" placeholder="클릭하여 선택" readonly onclick="openGatePopup('origin')" />
+        <input type="text" id="orig-gate" placeholder="클릭하여 선택" readonly onclick="openPopup('orig')"/>
       </div>
       <div>
         <label class="first">목적지</label>
-        <select id="dest-city" onchange="cityChanged('dest')">
-          <option value="">선택</option>
-          <option>서울</option><option>인천</option><option>군산</option>
+        <select id="dest-city" onchange="cityChange('dest')">
+          <option value="">선택</option><option>서울</option><option>인천</option><option>군산</option>
         </select>
         <label>도착 톨게이트</label>
-        <input type="text" id="dest-gate" placeholder="클릭하여 선택" readonly onclick="openGatePopup('dest')" />
+        <input type="text" id="dest-gate" placeholder="클릭하여 선택" readonly onclick="openPopup('dest')"/>
       </div>
     </div>
     <div class="row2" style="margin-top:14px;">
       <div>
         <label class="first">운행 거리 (km)</label>
-        <input type="number" id="distance" placeholder="예: 150" min="1" />
+        <input type="number" id="distance" placeholder="예: 150" min="1"/>
       </div>
       <div>
         <label class="first">왕복 / 편도</label>
-        <div class="tag-grid" id="trip-type-group">
-          <div class="tag" data-val="편도" onclick="selectTag(this,'trip-type-group')">편도</div>
-          <div class="tag" data-val="왕복" onclick="selectTag(this,'trip-type-group')">왕복</div>
+        <div class="tag-grid" id="grp-trip">
+          <div class="tag" data-val="편도" onclick="pickTag(this,'grp-trip')">편도</div>
+          <div class="tag" data-val="왕복" onclick="pickTag(this,'grp-trip')">왕복</div>
         </div>
       </div>
     </div>
     <div class="btn-group">
       <button class="btn btn-secondary" onclick="goStep(1)">← 이전</button>
-      <button class="btn btn-primary" onclick="goStep3()">다음 →</button>
+      <button class="btn btn-primary" onclick="go3()">다음 →</button>
     </div>
   </div>
 
@@ -194,44 +206,66 @@ input[readonly] { cursor: pointer; background: var(--bg2); }
   <div class="card hidden" id="step3">
     <div class="step-header">
       <div class="step-badge">3</div>
-      <div>
-        <div class="step-title">기름값 및 통행료 조회</div>
-        <div class="step-sub">공공 데이터 기준으로 자동 산출합니다</div>
-      </div>
+      <div><div class="step-title">기름값 및 통행료 조회</div><div class="step-sub">오피넷 API에서 출장 당일 실제 유가를 가져옵니다</div></div>
     </div>
 
-    <div class="section-label first">유류비 조회 — 오피넷 전국 평균 유가</div>
-    <div class="fetch-status" id="fuel-status">데이터 불러오는 중...</div>
-    <div class="loading-bar" id="fuel-loading"><div class="loading-fill"></div></div>
-    <div class="hidden" id="fuel-result">
-      <div class="info-row"><span class="info-key">유종</span><span class="info-val" id="r-fuel-type"></span></div>
-      <div class="info-row"><span class="info-key">전국 평균 유가</span><span class="info-val" id="r-fuel-price"></span></div>
-      <div class="info-row"><span class="info-key">운행 거리</span><span class="info-val" id="r-distance"></span></div>
+    <div class="sec-lbl first">유류비 조회 — 오피넷 전국 일일 평균가격 (7일)</div>
+    <div class="fetch-status">
+      <span class="dot spin" id="fuel-dot"></span>
+      <span id="fuel-msg">오피넷 API 호출 중...</span>
+    </div>
+    <div class="loading-bar" id="fuel-bar"><div class="loading-fill"></div></div>
+
+    <div class="hidden" id="fuel-ok">
+      <div class="data-box">
+        <div class="data-box-title">
+          <span id="fuel-type-lbl">보통휘발유</span> 7일 전국 평균가 (원/L) — ★ 출장 당일
+          <a href="https://www.opinet.co.kr/user/dopospdrg/dopOsPdrgSelect.do" class="source-link" target="_blank">오피넷 확인 →</a>
+        </div>
+        <div class="chips" id="price-chips"></div>
+      </div>
+      <div class="info-row" style="margin-top:12px;">
+        <span class="info-key">출장 당일 전국 평균가</span>
+        <span class="info-val" id="r-price" style="color:var(--blue);font-size:16px;"></span>
+      </div>
+      <div class="info-row"><span class="info-key">운행 거리</span><span class="info-val" id="r-dist"></span></div>
       <div class="info-row"><span class="info-key">유류비 계산식</span><span class="info-val" id="r-formula"></span></div>
-      <div class="screenshot-mock">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>출처: <a class="source-link" href="https://www.opinet.co.kr/user/dopospdrg/dopOsPdrgSelect.do" target="_blank">오피넷 (opinet.co.kr)</a> — 직접 확인 가능</span>
+    </div>
+
+    <div class="hidden" id="fuel-err">
+      <div class="notice error" id="fuel-err-msg"></div>
+      <div class="notice">
+        오피넷 API는 브라우저 보안 정책(CORS)으로 직접 호출이 차단될 수 있습니다.
+        <a href="https://www.opinet.co.kr/user/dopospdrg/dopOsPdrgSelect.do" class="source-link" target="_blank">오피넷에서 직접 조회</a> 후 아래에 입력해주세요.
+      </div>
+      <label style="margin-top:12px;">유가 수동 입력 (원/L, 출장 당일 전국 평균)</label>
+      <div style="display:flex;gap:8px;">
+        <input type="number" id="manual-price" placeholder="예: 1672" min="500" max="3000" style="flex:1;"/>
+        <button class="btn btn-primary" onclick="applyManual()" style="white-space:nowrap;">적용</button>
       </div>
     </div>
 
     <hr class="divider">
 
-    <div class="section-label">통행료 조회 — 한국도로공사 Hi-pass</div>
-    <div class="fetch-status" id="toll-status">데이터 불러오는 중...</div>
-    <div class="loading-bar" id="toll-loading"><div class="loading-fill"></div></div>
-    <div class="hidden" id="toll-result">
+    <div class="sec-lbl">통행료 조회 — 한국도로공사 공시 기준</div>
+    <div class="fetch-status">
+      <span class="dot spin" id="toll-dot"></span>
+      <span id="toll-msg">산출 중...</span>
+    </div>
+    <div class="loading-bar" id="toll-bar"><div class="loading-fill"></div></div>
+    <div class="hidden" id="toll-ok">
       <div class="info-row"><span class="info-key">구간</span><span class="info-val" id="r-route"></span></div>
-      <div class="info-row"><span class="info-key">차종</span><span class="info-val" id="r-car-type"></span></div>
-      <div class="info-row"><span class="info-key">통행료 (편도)</span><span class="info-val" id="r-toll-price"></span></div>
-      <div class="screenshot-mock">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>출처: <a class="source-link" href="https://www.hipass.co.kr/board/TollPaySearchList.do" target="_blank">Hi-pass (hipass.co.kr)</a> — 직접 확인 가능</span>
+      <div class="info-row"><span class="info-key">차종</span><span class="info-val" id="r-car"></span></div>
+      <div class="info-row"><span class="info-key">통행료 (편도)</span><span class="info-val" id="r-toll" style="color:var(--blue);"></span></div>
+      <div class="data-box" style="margin-top:10px;">
+        <div class="data-box-title">출처 <a href="https://www.hipass.co.kr/board/TollPaySearchList.do" class="source-link" target="_blank">Hi-pass 직접 확인 →</a></div>
+        <div style="font-size:12px;color:var(--text3);">한국도로공사 공시 통행료 (2024년 기준)</div>
       </div>
     </div>
 
     <div class="btn-group hidden" id="step3-btns">
       <button class="btn btn-secondary" onclick="goStep(2)">← 이전</button>
-      <button class="btn btn-primary" onclick="goStep4()">정산 리포트 생성 →</button>
+      <button class="btn btn-primary" onclick="go4()">정산 리포트 생성 →</button>
     </div>
   </div>
 
@@ -239,231 +273,304 @@ input[readonly] { cursor: pointer; background: var(--bg2); }
   <div class="card hidden" id="step4">
     <div class="step-header">
       <div class="step-badge done">✓</div>
-      <div>
-        <div class="step-title">출장비 정산 리포트</div>
-        <div class="step-sub" id="report-subtitle"></div>
-      </div>
+      <div><div class="step-title">출장비 정산 리포트</div><div class="step-sub" id="rpt-sub"></div></div>
     </div>
-
-    <div class="section-label first">입력 정보</div>
+    <div class="sec-lbl first">입력 정보</div>
     <div class="info-row"><span class="info-key">출장 일자</span><span class="info-val" id="rpt-date"></span></div>
     <div class="info-row"><span class="info-key">차종</span><span class="info-val" id="rpt-car"></span></div>
     <div class="info-row"><span class="info-key">유종</span><span class="info-val" id="rpt-fuel"></span></div>
     <div class="info-row"><span class="info-key">구간</span><span class="info-val" id="rpt-route"></span></div>
     <div class="info-row"><span class="info-key">운행 거리</span><span class="info-val" id="rpt-dist"></span></div>
     <div class="info-row"><span class="info-key">왕복 / 편도</span><span class="info-val" id="rpt-triptype"></span></div>
-
     <hr class="divider">
-    <div class="section-label">산정 기준</div>
-    <div class="info-row"><span class="info-key">전국 평균 유가</span><span class="info-val" id="rpt-unit-price"></span></div>
-    <div class="info-row"><span class="info-key">유류비 계산</span><span class="info-val" id="rpt-fuel-formula"></span></div>
-    <div class="info-row"><span class="info-key">통행료 (편도)</span><span class="info-val" id="rpt-toll-one"></span></div>
-
+    <div class="sec-lbl">산정 기준</div>
+    <div class="info-row"><span class="info-key">출장 당일 전국 평균 유가</span><span class="info-val" id="rpt-unitprice"></span></div>
+    <div class="info-row"><span class="info-key">유류비 계산</span><span class="info-val" id="rpt-formula"></span></div>
+    <div class="info-row"><span class="info-key">통행료 (편도)</span><span class="info-val" id="rpt-toll1"></span></div>
     <hr class="divider">
-    <div class="section-label">비용 요약</div>
+    <div class="sec-lbl">비용 요약</div>
     <div class="metric-grid">
-      <div class="metric-card">
-        <div class="metric-val" id="rpt-fuel-cost"></div>
-        <div class="metric-lbl">유류비</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-val" id="rpt-toll-cost"></div>
-        <div class="metric-lbl">통행료</div>
-      </div>
-      <div class="metric-card accent">
-        <div class="metric-val" id="rpt-total"></div>
-        <div class="metric-lbl">총 출장비</div>
-      </div>
+      <div class="metric-card"><div class="metric-val" id="rpt-fuelcost"></div><div class="metric-lbl">유류비</div></div>
+      <div class="metric-card"><div class="metric-val" id="rpt-tollcost"></div><div class="metric-lbl">통행료</div></div>
+      <div class="metric-card accent"><div class="metric-val" id="rpt-total"></div><div class="metric-lbl">총 출장비</div></div>
     </div>
     <div class="highlight-box">
-      <div>
-        <div class="big-num-label">최종 정산 금액</div>
-        <div class="big-num" id="rpt-grand-total"></div>
-      </div>
-      <span class="badge-success" id="rpt-badge"></span>
+      <div><div class="big-num-label">최종 정산 금액</div><div class="big-num" id="rpt-grand"></div></div>
+      <span class="badge badge-success" id="rpt-badge"></span>
     </div>
+    <div class="notice" id="rpt-src" style="margin-top:12px;"></div>
     <div class="btn-group">
       <button class="btn btn-secondary" onclick="resetAll()">← 새 정산 시작</button>
-      <button class="btn btn-primary" onclick="printReport()">인쇄 / PDF 저장</button>
+      <button class="btn btn-primary" onclick="window.print()">인쇄 / PDF 저장</button>
     </div>
   </div>
 </div>
 
-<!-- Gate Popup -->
-<div class="popup-backdrop hidden" id="gate-popup" onclick="closeGatePopup(event)">
+<!-- Popup -->
+<div class="popup-backdrop hidden" id="gate-popup" onclick="bgClose(event)">
   <div class="popup-inner">
     <div class="popup-title" id="popup-title">톨게이트 선택</div>
     <div id="gate-list"></div>
-    <div style="margin-top:14px; text-align:right;">
-      <button class="btn btn-secondary" onclick="closeGatePopup()">닫기</button>
-    </div>
+    <div style="margin-top:14px;text-align:right;"><button class="btn btn-secondary" onclick="closePopup()">닫기</button></div>
   </div>
 </div>
 
 <script>
-const state = { date:'', carType:'', fuelType:'', origin:'', originGate:'', dest:'', destGate:'', distance:0, tripType:'', fuelPrice:0, tollPrice:0 };
+const KEY = 'F260407806';
 
-const tollGates = {
-  서울: ['서울TG (경부)','서울TG (올림픽)','강남TG','판교TG','서초TG'],
-  인천: ['인천TG','인천공항TG','계양TG','서인천TG','부평TG'],
-  군산: ['군산TG','군산IC','대야TG','서군산TG','군산항TG']
+const GATES = {
+  서울:['서울TG (경부)','서울TG (올림픽)','강남TG','판교TG','서초TG'],
+  인천:['인천TG','인천공항TG','계양TG','서인천TG','부평TG'],
+  군산:['군산TG','군산IC','대야TG','서군산TG','군산항TG']
 };
 
-const tollTable = {
-  '서울-인천': {'1종':2100,'2종':2400,'3종':3200},
-  '서울-군산': {'1종':8600,'2종':9800,'3종':13200},
-  '인천-군산': {'1종':7800,'2종':8900,'3종':11900},
+// 한국도로공사 공시 통행료 (편도, 원)
+const TOLLS = {
+  '서울-인천':{'1종':2100,'2종':2400,'3종':3200},
+  '서울-군산':{'1종':8600,'2종':9800,'3종':13200},
+  '인천-군산':{'1종':7800,'2종':8900,'3종':11900},
 };
 
-const fuelPrices = { 휘발유:1672, 경유:1531, LPG:987 };
+// CORS 프록시 순서대로 시도
+const PROXIES = [
+  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+  u => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
+  u => `https://thingproxy.freeboard.io/fetch/${u}`,
+];
 
-let currentPopupTarget = null;
+const S = {
+  date:'', carType:'', fuelCode:'', fuelLabel:'',
+  orig:'', origGate:'', dest:'', destGate:'',
+  dist:0, tripType:'',
+  fuelPrice:0, fuelSrc:'', tollPrice:0,
+  days:[]
+};
+let popupTarget=null;
 
-function selectTag(el, groupId) {
-  document.querySelectorAll('#'+groupId+' .tag').forEach(t => t.classList.remove('selected'));
+const $=id=>document.getElementById(id);
+const show=id=>$(id).classList.remove('hidden');
+const hide=id=>$(id).classList.add('hidden');
+
+function pickTag(el,gid){
+  document.querySelectorAll('#'+gid+' .tag').forEach(t=>t.classList.remove('selected'));
   el.classList.add('selected');
 }
-function getSelected(groupId) {
-  const s = document.querySelector('#'+groupId+' .tag.selected');
-  return s ? s.dataset.val : '';
+function getTag(gid){
+  const s=document.querySelector('#'+gid+' .tag.selected');
+  return s?s.dataset:null;
 }
-function setStep(n) {
-  [1,2,3,4].forEach(i => {
-    document.getElementById('step'+i).classList.toggle('hidden', i!==n);
-    const ps = document.getElementById('ps'+i);
-    ps.className = 'prog-seg' + (i<n ? ' done' : i===n ? ' active' : '');
-  });
-  document.getElementById('step-indicator').textContent = n+'단계 / 4단계';
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-function goStep(n) { setStep(n); }
 
-function goStep2() {
-  const d = document.getElementById('trip-date').value;
-  const ct = getSelected('car-type-group');
-  const ft = getSelected('fuel-type-group');
-  if (!d) { alert('출장 일자를 선택해주세요.'); return; }
-  if (!ct) { alert('차종을 선택해주세요.'); return; }
-  if (!ft) { alert('유종을 선택해주세요.'); return; }
-  state.date=d; state.carType=ct; state.fuelType=ft;
+function setStep(n){
+  [1,2,3,4].forEach(i=>{
+    $('step'+i).classList.toggle('hidden',i!==n);
+    const p=$('ps'+i);
+    p.className='prog-seg'+(i<n?' done':i===n?' active':'');
+  });
+  $('step-ind').textContent=n+'단계 / 4단계';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goStep(n){setStep(n);}
+
+// Step 1 → 2
+function go2(){
+  const d=$('trip-date').value, ct=getTag('grp-car'), ft=getTag('grp-fuel');
+  if(!d){alert('출장 일자를 선택해주세요.');return;}
+  if(!ct){alert('차종을 선택해주세요.');return;}
+  if(!ft){alert('유종을 선택해주세요.');return;}
+  S.date=d; S.carType=ct.val; S.fuelCode=ft.val; S.fuelLabel=ft.label;
   setStep(2);
 }
 
-function cityChanged(target) {
-  const city = document.getElementById(target+'-city').value;
-  if (target==='origin') { state.origin=city; state.originGate=''; document.getElementById('origin-gate').value=''; }
-  else { state.dest=city; state.destGate=''; document.getElementById('dest-gate').value=''; }
+// Step 2
+function cityChange(t){
+  const city=$(t+'-city').value;
+  if(t==='orig'){S.orig=city;S.origGate='';$('orig-gate').value='';}
+  else{S.dest=city;S.destGate='';$('dest-gate').value='';}
 }
+function openPopup(t){
+  const city=t==='orig'?S.orig:S.dest;
+  if(!city){alert('먼저 '+(t==='orig'?'출발지':'목적지')+'를 선택해주세요.');return;}
+  popupTarget=t;
+  $('popup-title').textContent=city+' 고속도로 톨게이트 선택';
+  $('gate-list').innerHTML=(GATES[city]||[]).map(g=>`<div class="tg-item" onclick="pickGate('${g}')">${g}</div>`).join('');
+  show('gate-popup');
+}
+function pickGate(g){
+  if(popupTarget==='orig'){S.origGate=g;$('orig-gate').value=g;}
+  else{S.destGate=g;$('dest-gate').value=g;}
+  closePopup();
+}
+function closePopup(){hide('gate-popup');}
+function bgClose(e){if(e.target===$('gate-popup'))closePopup();}
 
-function openGatePopup(target) {
-  const city = target==='origin' ? state.origin : state.dest;
-  if (!city) { alert('먼저 '+(target==='origin'?'출발지':'목적지')+'를 선택해주세요.'); return; }
-  currentPopupTarget = target;
-  document.getElementById('popup-title').textContent = city+' 고속도로 톨게이트 선택';
-  const gates = tollGates[city] || [];
-  document.getElementById('gate-list').innerHTML = gates.map(g => `<div class="tg-item" onclick="selectGate('${g}')">${g}</div>`).join('');
-  document.getElementById('gate-popup').classList.remove('hidden');
-}
-function selectGate(gate) {
-  if (currentPopupTarget==='origin') { state.originGate=gate; document.getElementById('origin-gate').value=gate; }
-  else { state.destGate=gate; document.getElementById('dest-gate').value=gate; }
-  document.getElementById('gate-popup').classList.add('hidden');
-}
-function closeGatePopup(e) {
-  if (!e || e.target===document.getElementById('gate-popup'))
-    document.getElementById('gate-popup').classList.add('hidden');
-}
-
-function goStep3() {
-  if (!state.origin || !state.dest) { alert('출발지와 목적지를 선택해주세요.'); return; }
-  if (!state.originGate || !state.destGate) { alert('톨게이트를 선택해주세요.'); return; }
-  const dist = parseFloat(document.getElementById('distance').value);
-  if (!dist || dist<=0) { alert('운행 거리를 입력해주세요.'); return; }
-  const tt = getSelected('trip-type-group');
-  if (!tt) { alert('왕복/편도를 선택해주세요.'); return; }
-  state.distance=dist; state.tripType=tt;
+function go3(){
+  if(!S.orig||!S.dest){alert('출발지와 목적지를 선택해주세요.');return;}
+  if(!S.origGate||!S.destGate){alert('톨게이트를 선택해주세요.');return;}
+  const d=parseFloat($('distance').value);
+  if(!d||d<=0){alert('운행 거리를 입력해주세요.');return;}
+  const tt=getTag('grp-trip');
+  if(!tt){alert('왕복/편도를 선택해주세요.');return;}
+  S.dist=d; S.tripType=tt.val;
   setStep(3);
-  runFetch();
+  fetchAll();
 }
 
-function runFetch() {
-  document.getElementById('fuel-result').classList.add('hidden');
-  document.getElementById('toll-result').classList.add('hidden');
-  document.getElementById('step3-btns').classList.add('hidden');
-  document.getElementById('fuel-loading').classList.remove('hidden');
-  document.getElementById('toll-loading').classList.remove('hidden');
-  document.getElementById('fuel-status').textContent = state.date+' 기준 · 오피넷 전국 평균 유가 조회 중...';
-  document.getElementById('toll-status').textContent = '한국도로공사 통행료 조회 중...';
-
-  setTimeout(() => {
-    const fp = fuelPrices[state.fuelType];
-    state.fuelPrice = fp;
-    const totalDist = state.tripType==='왕복' ? state.distance*2 : state.distance;
-    const fuelCost = Math.round((fp/10)*totalDist);
-    document.getElementById('r-fuel-type').textContent = state.fuelType;
-    document.getElementById('r-fuel-price').textContent = fp.toLocaleString()+'원/L (전국평균)';
-    document.getElementById('r-distance').textContent = totalDist.toLocaleString()+'km ('+state.tripType+')';
-    document.getElementById('r-formula').textContent = '('+fp.toLocaleString()+'÷10)×'+totalDist+' = '+fuelCost.toLocaleString()+'원';
-    document.getElementById('fuel-loading').classList.add('hidden');
-    document.getElementById('fuel-status').textContent = '조회 완료';
-    document.getElementById('fuel-result').classList.remove('hidden');
-  }, 1400);
-
-  setTimeout(() => {
-    const key1=state.origin+'-'+state.dest, key2=state.dest+'-'+state.origin;
-    const tollMap = tollTable[key1]||tollTable[key2]||{};
-    const onewayToll = tollMap[state.carType]||3500;
-    state.tollPrice = onewayToll;
-    document.getElementById('r-route').textContent = state.originGate+' → '+state.destGate;
-    document.getElementById('r-car-type').textContent = state.carType;
-    document.getElementById('r-toll-price').textContent = onewayToll.toLocaleString()+'원';
-    document.getElementById('toll-loading').classList.add('hidden');
-    document.getElementById('toll-status').textContent = '조회 완료';
-    document.getElementById('toll-result').classList.remove('hidden');
-    document.getElementById('step3-btns').classList.remove('hidden');
-  }, 2400);
+// 오피넷 avgRecentNDayPrice API
+// 출장일자로부터 +3일을 date 파라미터로 넘기면 해당 날짜 이전 7일 데이터 반환
+function buildApiUrl(){
+  const end=new Date(S.date);
+  end.setDate(end.getDate()+3);
+  const endStr=end.toISOString().split('T')[0].replace(/-/g,'');
+  return `https://www.opinet.co.kr/api/avgRecentNDayPrice.do?code=${KEY}&out=json&prodcd=${S.fuelCode}&date=${endStr}`;
 }
 
-function goStep4() {
-  const fp = state.fuelPrice;
-  const totalDist = state.tripType==='왕복' ? state.distance*2 : state.distance;
-  const fuelCost = Math.round((fp/10)*totalDist);
-  const tollCost = state.tripType==='왕복' ? state.tollPrice*2 : state.tollPrice;
-  const total = fuelCost+tollCost;
-  document.getElementById('rpt-date').textContent = state.date;
-  document.getElementById('rpt-car').textContent = state.carType;
-  document.getElementById('rpt-fuel').textContent = state.fuelType;
-  document.getElementById('rpt-route').textContent = state.origin+'('+state.originGate+') → '+state.dest+'('+state.destGate+')';
-  document.getElementById('rpt-dist').textContent = state.distance.toLocaleString()+'km';
-  document.getElementById('rpt-triptype').textContent = state.tripType;
-  document.getElementById('rpt-unit-price').textContent = fp.toLocaleString()+'원/L';
-  document.getElementById('rpt-fuel-formula').textContent = '('+fp.toLocaleString()+'÷10)×'+totalDist+'km = '+fuelCost.toLocaleString()+'원';
-  document.getElementById('rpt-toll-one').textContent = state.tollPrice.toLocaleString()+'원';
-  document.getElementById('rpt-fuel-cost').textContent = fuelCost.toLocaleString()+'원';
-  document.getElementById('rpt-toll-cost').textContent = tollCost.toLocaleString()+'원';
-  document.getElementById('rpt-total').textContent = total.toLocaleString()+'원';
-  document.getElementById('rpt-grand-total').textContent = total.toLocaleString()+'원';
-  document.getElementById('rpt-badge').textContent = state.tripType+' · '+state.carType;
-  document.getElementById('report-subtitle').textContent = state.date+' 출장 정산 완료';
+async function tryProxies(rawUrl){
+  for(let i=0;i<PROXIES.length;i++){
+    try{
+      const resp=await fetch(PROXIES[i](rawUrl),{signal:AbortSignal.timeout(9000)});
+      if(!resp.ok) continue;
+      const json=await resp.json();
+      // allorigins wraps in {contents}
+      return json.contents?JSON.parse(json.contents):json;
+    }catch(e){if(i===PROXIES.length-1)throw e;}
+  }
+}
+
+function fmtDate(s){return s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6,8);}
+
+function setFuelDot(type,msg){
+  $('fuel-dot').className='dot '+type;
+  $('fuel-msg').textContent=msg;
+}
+
+function renderFuelOk(){
+  const tripKey=S.date.replace(/-/g,'');
+  $('fuel-type-lbl').textContent=S.fuelLabel;
+  $('price-chips').innerHTML=S.days.map(d=>{
+    const hl=d.date===tripKey;
+    return `<div class="chip${hl?' hl':''}">
+      <span class="chip-date">${fmtDate(d.date)}${hl?' ★':''}</span>
+      <span class="chip-val">${d.price.toFixed(0)}원</span>
+    </div>`;
+  }).join('');
+  const totalDist=S.tripType==='왕복'?S.dist*2:S.dist;
+  const fc=Math.round((S.fuelPrice/10)*totalDist);
+  $('r-price').textContent=S.fuelPrice.toFixed(2)+'원/L';
+  $('r-dist').textContent=totalDist.toLocaleString()+'km ('+S.tripType+')';
+  $('r-formula').textContent='('+Math.round(S.fuelPrice)+'÷10)×'+totalDist+' = '+fc.toLocaleString()+'원';
+  hide('fuel-bar');
+  show('fuel-ok');
+  setFuelDot('ok','오피넷 조회 완료 · '+S.fuelSrc);
+}
+
+async function fetchFuel(){
+  setFuelDot('spin','오피넷 API 호출 중 (출장일 ±3일 범위)...');
+  const url=buildApiUrl();
+  let data;
+  try{ data=await tryProxies(url); }
+  catch(e){throw new Error('프록시 모두 실패: '+e.message);}
+
+  const oils=data?.RESULT?.OIL;
+  if(!oils||!oils.length) throw new Error('API 응답에 데이터가 없습니다.');
+
+  S.days=oils.map(o=>({date:o.TRADE_DT,price:parseFloat(o.PRICE)})).sort((a,b)=>a.date.localeCompare(b.date));
+
+  const tripKey=S.date.replace(/-/g,'');
+  const exact=S.days.find(d=>d.date===tripKey);
+  if(exact){
+    S.fuelPrice=exact.price;
+    S.fuelSrc=`오피넷 실제 데이터 (${S.date})`;
+  } else {
+    const nearest=[...S.days].sort((a,b)=>Math.abs(parseInt(a.date)-parseInt(tripKey))-Math.abs(parseInt(b.date)-parseInt(tripKey)))[0];
+    S.fuelPrice=nearest.price;
+    S.fuelSrc=`출장일 데이터 없음 → 인접일(${fmtDate(nearest.date)}) 기준`;
+  }
+}
+
+function fetchToll(){
+  setTimeout(()=>{
+    $('toll-dot').className='dot spin';
+    $('toll-msg').textContent='통행료 산출 중...';
+    const k1=S.orig+'-'+S.dest, k2=S.dest+'-'+S.orig;
+    const m=TOLLS[k1]||TOLLS[k2]||{};
+    S.tollPrice=m[S.carType]||3500;
+    $('r-route').textContent=S.origGate+' → '+S.destGate;
+    $('r-car').textContent=S.carType;
+    $('r-toll').textContent=S.tollPrice.toLocaleString()+'원';
+    hide('toll-bar');
+    show('toll-ok');
+    $('toll-dot').className='dot ok';
+    $('toll-msg').textContent='통행료 산출 완료';
+    show('step3-btns');
+  },1600);
+}
+
+function applyManual(){
+  const v=parseFloat($('manual-price').value);
+  if(!v||v<500||v>3000){alert('올바른 유가를 입력해주세요.');return;}
+  S.fuelPrice=v; S.fuelSrc='수동 입력값';
+  S.days=[{date:S.date.replace(/-/g,''),price:v}];
+  hide('fuel-err');
+  renderFuelOk();
+}
+
+async function fetchAll(){
+  hide('fuel-ok'); hide('fuel-err'); hide('toll-ok'); hide('step3-btns');
+  show('fuel-bar'); show('toll-bar');
+  $('fuel-dot').className='dot spin';
+  $('toll-dot').className='dot spin';
+  $('toll-msg').textContent='대기 중...';
+  try{
+    await fetchFuel();
+    renderFuelOk();
+  }catch(e){
+    hide('fuel-bar');
+    setFuelDot('err','API 호출 실패');
+    $('fuel-err-msg').textContent='오류: '+e.message;
+    show('fuel-err');
+  }
+  fetchToll();
+}
+
+// Step 4
+function go4(){
+  const fp=S.fuelPrice;
+  const td=S.tripType==='왕복'?S.dist*2:S.dist;
+  const fc=Math.round((fp/10)*td);
+  const tc=S.tripType==='왕복'?S.tollPrice*2:S.tollPrice;
+  const tot=fc+tc;
+  $('rpt-date').textContent=S.date;
+  $('rpt-car').textContent=S.carType;
+  $('rpt-fuel').textContent=S.fuelLabel;
+  $('rpt-route').textContent=S.orig+'('+S.origGate+') → '+S.dest+'('+S.destGate+')';
+  $('rpt-dist').textContent=S.dist.toLocaleString()+'km';
+  $('rpt-triptype').textContent=S.tripType;
+  $('rpt-unitprice').textContent=fp.toFixed(2)+'원/L';
+  $('rpt-formula').textContent='('+Math.round(fp)+'÷10)×'+td+'km = '+fc.toLocaleString()+'원';
+  $('rpt-toll1').textContent=S.tollPrice.toLocaleString()+'원';
+  $('rpt-fuelcost').textContent=fc.toLocaleString()+'원';
+  $('rpt-tollcost').textContent=tc.toLocaleString()+'원';
+  $('rpt-total').textContent=tot.toLocaleString()+'원';
+  $('rpt-grand').textContent=tot.toLocaleString()+'원';
+  $('rpt-badge').textContent=S.tripType+' · '+S.carType;
+  $('rpt-sub').textContent=S.date+' 출장 정산 완료';
+  $('rpt-src').textContent='유가 출처: '+S.fuelSrc+' · 통행료: 한국도로공사 공시 기준 (2024)';
   setStep(4);
 }
 
-function resetAll() {
-  Object.keys(state).forEach(k => state[k]='');
-  state.distance=0; state.fuelPrice=0; state.tollPrice=0;
-  document.getElementById('trip-date').value='';
+function resetAll(){
+  Object.keys(S).forEach(k=>S[k]=typeof S[k]==='number'?0:Array.isArray(S[k])?[]:'');
+  $('trip-date').value=today;
   document.querySelectorAll('.tag').forEach(t=>t.classList.remove('selected'));
-  ['origin-city','dest-city'].forEach(id=>document.getElementById(id).value='');
-  ['origin-gate','dest-gate'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('distance').value='';
+  ['orig-city','dest-city'].forEach(id=>$(id).value='');
+  ['orig-gate','dest-gate'].forEach(id=>$(id).value='');
+  $('distance').value='';
   setStep(1);
 }
 
-function printReport() { window.print(); }
-
-// Set today as default date
-const today = new Date().toISOString().split('T')[0];
-document.getElementById('trip-date').value = today;
+const today=new Date().toISOString().split('T')[0];
+$('trip-date').value=today;
+setStep(1);
 </script>
 </body>
 </html>
